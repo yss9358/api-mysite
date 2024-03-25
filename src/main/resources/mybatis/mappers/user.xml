@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<!-- 쿼리문작성 -->
+	<!-- <![CDATA[]]> -->
+
+	<select id="userSelectByIdPw" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select	no,
+					name
+			from users
+			where id = #{id}
+			and password = #{password}	
+		]]>
+	</select>
+
+</mapper>
