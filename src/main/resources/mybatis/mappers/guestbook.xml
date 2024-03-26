@@ -46,4 +46,13 @@
 		]]>
 	</select>
 	
+	<!-- 삭제 -->
+	<delete id="deleteOne" parameterType="com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			delete from guestbook
+			where no = #{no}
+			and password= #{password}
+		]]>
+	</delete>
+	
 </mapper>

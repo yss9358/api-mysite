@@ -29,4 +29,8 @@ public class GuestbookDao {
 		return sqlSession.selectOne("guestbook.selectOneByNo", no);
 	}
 	
+	// 삭제
+	public int deleteOne(GuestbookVo guestbookVo) {
+		return sqlSession.delete("guestbook.deleteOne", guestbookVo);
+	}
 }

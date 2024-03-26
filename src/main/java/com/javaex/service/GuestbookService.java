@@ -29,4 +29,9 @@ public class GuestbookService {
 		}
 	}
 	
+	// 삭제
+	public int exeDelete(GuestbookVo guestbookVo) {
+		return guestbookDao.deleteOne(guestbookVo);
+	}
+	
 }
