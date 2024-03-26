@@ -56,7 +56,7 @@ public class JwtUtil {
 	
 	
 	//해더에서 토큰꺼내기
-	public static String getTokenByHeader(HttpServletRequest request) {
+	private static String getTokenByHeader(HttpServletRequest request) {
     	String authorization = request.getHeader("Authorization");
     	
         // 'Authorization' 헤더 값에서 실제 토큰 값만 추출
@@ -88,7 +88,7 @@ public class JwtUtil {
  	
  
 	//토큰에서 주체 꺼내기
-	private static String getSubjectFromToken(String token) {
+	public static String getSubjectFromToken(String token) {
 		
 		DecodedJWT decodedJWT = JWT.decode(token);
 		return decodedJWT.getSubject();

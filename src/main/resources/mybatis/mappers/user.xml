@@ -8,6 +8,7 @@
 	<!-- 쿼리문작성 -->
 	<!-- <![CDATA[]]> -->
 
+	<!-- 로그인 -->
 	<select id="userSelectByIdPw" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
 			select	no,
@@ -18,4 +19,29 @@
 		]]>
 	</select>
 
+	<!-- 회원정보수정폼 - 한명 데이터 가져오기 -->
+	<select id="userSelectOneByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select	no,
+					id,
+			        password,
+			        name,
+			        gender
+			from users
+			where no = #{no}
+		]]>
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			update users
+			set password = #{password},
+				name = #{name},
+			    gender = #{gender}
+			where no = #{no}
+			
+		]]>
+	</update>
+	
 </mapper>

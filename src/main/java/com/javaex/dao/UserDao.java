@@ -17,4 +17,14 @@ public class UserDao {
 		return sqlSession.selectOne("user.userSelectByIdPw", userVo);
 	}
 	
+	// 회원정보 수정폼 - 한명 데이터 가져오기
+	public UserVo userSelectOneByNo(int no) {
+		return sqlSession.selectOne("user.userSelectOneByNo", no);
+	}
+	
+	// 회원정보 수정
+	public int updateUser(UserVo userVo) {
+		return sqlSession.update("user.updateUser",userVo);
+		
+	}
 }
