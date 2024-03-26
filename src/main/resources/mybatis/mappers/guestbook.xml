@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="guestbook">
+
+	<!-- 쿼리문작성 -->
+	<!-- <![CDATA[]]> -->
+	
+	<!-- 전체 리스트 가져오기 -->
+	<select id="list" resultType="com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			select	no,
+					name,
+			        content,
+			        reg_date regDate
+			from guestbook
+			order by no desc
+		]]>
+	</select>
+	
+	<!-- 등록하고 no 값추가 -->
+	<insert id="insertGuest" parameterType="com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			insert into guestbook
+			value(null, #{name}, #{password}, #{content}, now())
+		]]>
+		
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+	</insert>
+	
+	<!-- 한명 데이터 값 가져오기 -->
+	<select id="selectOneByNo" parameterType="int" resultType="com.javaex.vo.GuestbookVo">
+		<![CDATA[
+			select	no,
+					name,
+			        content,
+			        reg_date regDate
+			from guestbook
+			where no = #{no}
+		]]>
+	</select>
+	
+</mapper>

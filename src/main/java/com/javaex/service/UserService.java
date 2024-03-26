@@ -17,6 +17,11 @@ public class UserService {
 		return userDao.userSelectByIdPw(userVo);
 	}
 	
+	// 회원가입
+	public int exeJoin(UserVo userVo) {
+		return userDao.insertUser(userVo);
+	}
+	
 	// 회원정보 수정폼 - 한명 데이터 가져오기
 	public UserVo exeModifyform(int no) {
 		return userDao.userSelectOneByNo(no);

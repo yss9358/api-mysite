@@ -18,6 +18,14 @@
 			and password = #{password}	
 		]]>
 	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			insert into users
+			value(null, #{id}, #{password}, #{name}, #{gender})
+		]]>
+	</insert>
 
 	<!-- 회원정보수정폼 - 한명 데이터 가져오기 -->
 	<select id="userSelectOneByNo" parameterType="int" resultType="com.javaex.vo.UserVo">
