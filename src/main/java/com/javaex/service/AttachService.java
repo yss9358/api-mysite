@@ -20,7 +20,8 @@ public class AttachService {
 	private AttachDao attachDao;
 	
 	// 파일 업로드
-	public String exeUpload(MultipartFile file) {
+	public String exeUpload(MultipartFile file, int userNo) {
+		
 		// 파일저장디렉토리
 		String saveDir = "C:\\javaStudy\\uploadfile";
 
@@ -59,7 +60,7 @@ public class AttachService {
 
 		
 		// vo로묶기 -> DB저장
-		AttachVo attachVo = new AttachVo(orgName, saveName, filePath, fileSize);
+		AttachVo attachVo = new AttachVo(orgName, saveName, filePath, fileSize, userNo);
 		int count = attachDao.insertFile(attachVo);
 		if(count == 1) {
 			return saveName;

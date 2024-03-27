@@ -17,10 +17,11 @@ public class AttachController {
 	
 	// 파일 등록하기
 	@PostMapping("/api/attach")
-	public JsonResult upload(@RequestParam MultipartFile file) {
+	public JsonResult upload(@RequestParam MultipartFile file, @RequestParam int userNo) {
+		
 		// 파일 확인
 		if(file != null) { // 파일이 있으면 업로드 실행
-			String saveName = attachService.exeUpload(file);
+			String saveName = attachService.exeUpload(file,userNo);
 			if(saveName != null) { // 실행된 결과값이 null이 아니면 성공, null 이면 실패결과 보내기
 				return JsonResult.success(saveName);
 			} else {

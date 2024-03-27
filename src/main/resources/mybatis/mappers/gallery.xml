@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="gallery">
+
+	<!-- 쿼리문작성 -->
+	<!-- <![CDATA[]]> -->
+	
+	<!-- 리스트 가져오기 -->
+	<select id="list" resultType="com.javaex.vo.AttachVo">
+		<![CDATA[
+			select	a.save_name saveName,
+			        a.user_no userNo,
+			        u.name name
+			from attach a 
+			inner join users u
+			where a.user_no = u.no
+		]]>
+	</select>
+
+	
+	
+</mapper>
