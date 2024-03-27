@@ -12,5 +12,6 @@
 		<mapper resource="mybatis/mappers/guestbook.xml" />
 		<mapper resource="mybatis/mappers/attach.xml" />
 		<mapper resource="mybatis/mappers/gallery.xml" />
+		<mapper resource="mybatis/mappers/board.xml" />
 	</mappers>
 </configuration>
