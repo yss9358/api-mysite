@@ -24,8 +24,15 @@ public class GalleryDao {
 		return sqlSession.insert("gallery.insertImage", attachVo);
 	}
 	
+	// 삭제
+	public int deleteByNo(int no) {
+		return sqlSession.delete("gallery.deleteByNo", no);
+	}
+	
 	// 한명 데이터 가져오기
 	public AttachVo selectOneData(int no) {
 		return sqlSession.selectOne("gallery.selectOneData",no);
 	}
+	
+
 }

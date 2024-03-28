@@ -27,6 +27,27 @@ public class GalleryService {
 		return galleryDao.list();
 	}
 	
+	// 한명 데이터 가져오기
+	public Map<String, Object> exeSelectOneByNo(int no) {
+		AttachVo vo = galleryDao.selectOneData(no);
+		if(vo != null) {
+			Map<String, Object> voMap = new HashMap<String, Object>();
+			voMap.put("no", vo.getNo());
+			voMap.put("saveName", vo.getSaveName());
+			voMap.put("userNo", vo.getUserNo());
+			voMap.put("content", vo.getContent());
+			return voMap;
+		} else {
+			return null;
+		}
+		
+	}
+	
+	// 삭제
+	public int exeDelete(int no) {
+		return galleryDao.deleteByNo(no);
+	}
+	
 	// 등록
 	public Map<String,Object> exeAdd(MultipartFile file, int no, String content) {		
 		// 파일 저장

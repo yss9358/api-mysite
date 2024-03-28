@@ -13,7 +13,8 @@
 		<![CDATA[
 			select	a.save_name saveName,
 			        a.user_no userNo,
-			        u.name name
+			        u.name name,
+			        a.no
 			from attach a 
 			inner join users u
 			where a.user_no = u.no
@@ -33,12 +34,22 @@
 		</selectKey>
 	</insert>
 	
+	<!-- 삭제 -->
+	<delete id="deleteByNo" parameterType="int">
+		<![CDATA[
+			delete from attach
+			where no = #{no}
+		]]>
+	</delete>
+	
 	<!-- 한명 데이터 가져오기 -->
 	<select id="selectOneData" parameterType="int" resultType="com.javaex.vo.AttachVo">
 		<![CDATA[
 			select	a.save_name saveName,
 					a.user_no userNo,
-			        u.name name
+			        u.name name,
+			        a.no,
+			        a.content
 			from attach a
 			inner join users u
 			where a.user_no = u.no
