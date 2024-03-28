@@ -19,4 +19,13 @@ public class GalleryDao {
 		return sqlSession.selectList("gallery.list");
 	}
 	
+	// 등록
+	public int insertImage(AttachVo attachVo) {
+		return sqlSession.insert("gallery.insertImage", attachVo);
+	}
+	
+	// 한명 데이터 가져오기
+	public AttachVo selectOneData(int no) {
+		return sqlSession.selectOne("gallery.selectOneData",no);
+	}
 }

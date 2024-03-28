@@ -9,11 +9,21 @@ public class AttachVo {
 	private long fileSize;
 	private int userNo;
 	private String name;
+	private String content;
 
 	public AttachVo() {
 
 	}
-	
+
+	public AttachVo(String orgName, String saveName, String filePath, long fileSize, int userNo, String content) {
+		this.orgName = orgName;
+		this.saveName = saveName;
+		this.filePath = filePath;
+		this.fileSize = fileSize;
+		this.userNo = userNo;
+		this.content = content;
+	}
+
 	public AttachVo(String orgName, String saveName, String filePath, long fileSize, int userNo) {
 		this.orgName = orgName;
 		this.saveName = saveName;
@@ -21,9 +31,9 @@ public class AttachVo {
 		this.fileSize = fileSize;
 		this.userNo = userNo;
 	}
-
-
-	public AttachVo(int no, String orgName, String saveName, String filePath, long fileSize, int userNo, String name) {
+	
+	public AttachVo(int no, String orgName, String saveName, String filePath, long fileSize, int userNo, String name,
+			String content) {
 		this.no = no;
 		this.orgName = orgName;
 		this.saveName = saveName;
@@ -31,14 +41,23 @@ public class AttachVo {
 		this.fileSize = fileSize;
 		this.userNo = userNo;
 		this.name = name;
+		this.content = content;
 	}
-	
+
 	public int getUserNo() {
 		return userNo;
 	}
 
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getName() {
@@ -83,11 +102,10 @@ public class AttachVo {
 	@Override
 	public String toString() {
 		return "AttachVo [no=" + no + ", orgName=" + orgName + ", saveName=" + saveName + ", filePath=" + filePath
-				+ ", fileSize=" + fileSize + ", userNo=" + userNo + ", name=" + name + "]";
+				+ ", fileSize=" + fileSize + ", userNo=" + userNo + ", name=" + name + ", content=" + content + "]";
 	}
-	
-	
-	
+
+
 	
 	
 }

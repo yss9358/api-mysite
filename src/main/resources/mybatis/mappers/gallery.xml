@@ -19,7 +19,32 @@
 			where a.user_no = u.no
 		]]>
 	</select>
-
+	
+	<!-- 등록 -->
+	<insert id="insertImage" parameterType="com.javaex.vo.AttachVo">
+		<![CDATA[
+			insert into attach
+			value(null, #{orgName}, #{saveName}, #{filePath}, #{fileSize}, #{content}, #{userNo})
+		]]>
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+			<![CDATA[
+				select last_insert_id()
+			]]>
+		</selectKey>
+	</insert>
+	
+	<!-- 한명 데이터 가져오기 -->
+	<select id="selectOneData" parameterType="int" resultType="com.javaex.vo.AttachVo">
+		<![CDATA[
+			select	a.save_name saveName,
+					a.user_no userNo,
+			        u.name name
+			from attach a
+			inner join users u
+			where a.user_no = u.no
+			and a.no = #{no}
+		]]>
+	</select>
 	
 	
 </mapper>
