@@ -56,4 +56,12 @@
 		]]>
 	</delete>
 	
+	<!-- 조회수 올리기 -->
+	<update id="hitUpdateByNo" parameterType="int">
+		<![CDATA[
+			update tboard
+			set hit = hit + 1
+			where no = #{no}
+		]]>
+	</update>
 </mapper>

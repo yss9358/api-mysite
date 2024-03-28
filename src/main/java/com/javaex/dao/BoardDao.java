@@ -33,4 +33,9 @@ public class BoardDao {
 	public int deleteByNo(int no) {
 		return sqlSession.delete("board.deleteByNo", no);
 	}
+	
+	// 조회수 올리기
+	public int hitUpdateByNo(int no) {
+		return sqlSession.update("board.hitUpdateByNo", no);
+	}
 }

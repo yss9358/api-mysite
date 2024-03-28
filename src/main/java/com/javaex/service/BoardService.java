@@ -21,7 +21,12 @@ public class BoardService {
 	
 	// 한명 데이터 가져오기
 	public TBoardVo exeSelectOneByNo(int no) {
-		return boardDao.selectOneByNo(no);
+		int count = boardDao.hitUpdateByNo(no);
+		if(count == 1) {
+			 return boardDao.selectOneByNo(no);
+		} else {
+			return null;
+		}
 	}
 	
 	// 등록
@@ -32,5 +37,15 @@ public class BoardService {
 	// 삭제
 	public int exeDelete(int no) {
 		return boardDao.deleteByNo(no);
+	}
+	
+	// 수정폼 - 한명데이터 가져오기
+	public TBoardVo exeModifyForm(int no) {
+		return boardDao.selectOneByNo(no);
+	}
+	
+	// 수정
+	public void exeModify(TBoardVo tboardVo) {
+		System.out.println("ser"+ tboardVo);
 	}
 }

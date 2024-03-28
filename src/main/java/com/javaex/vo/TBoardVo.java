@@ -83,7 +83,9 @@ public class TBoardVo {
 	@Override
 	public String toString() {
 		return "TBoardVo [no=" + no + ", title=" + title + ", hit=" + hit + ", regDate=" + regDate + ", userNo="
-				+ userNo + ", name=" + name + "]";
+				+ userNo + ", name=" + name + ", content=" + content + "]";
 	}
+
+	
 	
 }
