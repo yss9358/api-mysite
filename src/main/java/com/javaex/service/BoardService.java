@@ -19,6 +19,11 @@ public class BoardService {
 		return boardDao.list();
 	}
 	
+	// 추가 리스트 가져오기
+	public List<TBoardVo> exeMoreList(int no) {
+		return boardDao.moreList(no);
+	}
+	
 	// 한명 데이터 가져오기
 	public TBoardVo exeSelectOneByNo(int no) {
 		int count = boardDao.hitUpdateByNo(no);
@@ -45,7 +50,7 @@ public class BoardService {
 	}
 	
 	// 수정
-	public void exeModify(TBoardVo tboardVo) {
-		System.out.println("ser"+ tboardVo);
+	public int exeModify(TBoardVo tboardVo) {
+		return boardDao.updateOne(tboardVo);
 	}
 }

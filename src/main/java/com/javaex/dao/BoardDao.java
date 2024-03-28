@@ -19,6 +19,11 @@ public class BoardDao {
 		return sqlSession.selectList("board.list");
 	}
 	
+	// 추가 리스트 가져오기
+	public List<TBoardVo> moreList(int no) {
+		return sqlSession.selectList("board.moreList",no);
+	}
+	
 	// 한명 데이터 가져오기
 	public TBoardVo selectOneByNo(int no) {
 		return sqlSession.selectOne("board.selectOneByNo", no);
@@ -37,5 +42,10 @@ public class BoardDao {
 	// 조회수 올리기
 	public int hitUpdateByNo(int no) {
 		return sqlSession.update("board.hitUpdateByNo", no);
+	}
+	
+	// 수정
+	public int updateOne(TBoardVo tboardVo) {
+		return sqlSession.update("board.updateOne",tboardVo);
 	}
 }

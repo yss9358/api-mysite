@@ -24,6 +24,22 @@
 		]]>
 	</select>
 	
+	<!-- 추가 리스트 가져오기 -->
+	<select id="moreList" parameterType="int" resultType="com.javaex.vo.TBoardVo">
+		<![CDATA[
+			select	t.no,
+					t.title,
+			        t.hit,
+			        t.reg_date regDate,
+			        t.user_no userNo,
+			        u.name
+			from tboard t join users u
+			where t.user_no = u.no
+			order by t.no desc
+			limit #{no},10
+		]]>
+	</select>
+	
 	<!-- 한명 데이터 가져오기 -->
 	<select id="selectOneByNo" parameterType="int" resultType="com.javaex.vo.TBoardVo">
 		<![CDATA[
@@ -64,4 +80,15 @@
 			where no = #{no}
 		]]>
 	</update>
+	
+	<!-- 수정 -->
+	<update id="updateOne" parameterType="com.javaex.vo.TBoardVo">
+		<![CDATA[
+			update tboard
+			set	title = #{title},
+				content = #{content}
+			where no = #{no}
+		]]>
+	</update>
+	
 </mapper>

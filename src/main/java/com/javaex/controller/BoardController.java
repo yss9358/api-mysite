@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,18 @@ public class BoardController {
 			return JsonResult.success(boardService.exeList());
 		} else {
 			return JsonResult.fail("리스트를 불러오는데 실패했습니다.");
+		}
+	}
+	
+	// 리스트 추가로 가져오기
+	@PostMapping("/api/boards/morelist")
+	public JsonResult moreList(@RequestBody int no) {
+		System.out.println(no);
+		List<TBoardVo> list = boardService.exeMoreList(no);
+		if (list != null) {
+			return JsonResult.success(list);
+		} else {
+			return JsonResult.fail("글을 불러오는데 실패했습니다.");
 		}
 	}
 	
@@ -85,11 +99,14 @@ public class BoardController {
 	
 	// 수정 - 토큰검증
 	@PutMapping("/api/boards/modify")
-	public void modify(HttpServletRequest request,@RequestBody TBoardVo tboardVo) {
+	public JsonResult modify(HttpServletRequest request,@RequestBody TBoardVo tboardVo) {
 		int no = JwtUtil.getNoFromHeader(request);
-		System.out.println(no);
-		boardService.exeModify(tboardVo);
-		
+		int count = boardService.exeModify(tboardVo);
+		if(no != -1) {
+			return JsonResult.success(count);
+		} else {
+			return JsonResult.fail("수정에 실패했습니다.");
+		}
 	}
 	
 	
